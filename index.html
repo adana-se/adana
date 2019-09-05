@@ -24,11 +24,30 @@
   </body>
 
   <script>
+    var skewerPin = L.icon({iconUrl: 'skewer.png'});
+
+    var markers = [
+        {
+            coordinates: [59.33, 18.06],
+            title: 'middle of things',
+            icon: skewerPin
+        }
+    ]
+    
     var map = L.map('adanamap').setView([59.3346, 18.066], 13);
     
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+
+    for(var m of markers) {
+        var markerOptions = {
+            title: m.title,
+            icon: m.icon
+        }
+
+        L.marker(m.coordinates, markerOptions).addTo(map);
+    }
 
   </script>
 

@@ -19,8 +19,6 @@
 
   <body>
     <div id="adanamap" />
-
-    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
   </body>
 
   <script>
@@ -36,9 +34,11 @@
     
     var map = L.map('adanamap').setView([59.3346, 18.066], 13);
     var anotherLayer = 'http://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
+    var osmAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    var iconAttribution = 'Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>' 
     
     L.tileLayer(anotherLayer, {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: osmAttribution + ' | ' + iconAttribution
     }).addTo(map);
 
     for(var m of markers) {

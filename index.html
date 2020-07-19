@@ -35,8 +35,9 @@
     ]
     
     var map = L.map('adanamap').setView([59.3346, 18.066], 13);
+    var anotherLayer = 'http://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
     
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer(anotherLayer, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 

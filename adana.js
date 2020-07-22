@@ -10,8 +10,12 @@ let markers = [
 
 let map = L.map('adanamap').setView([59.3346, 18.066], 13);
 let anotherLayer = 'http://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
-let osmAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-let iconAttribution = 'Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>' 
+let osmAttribution = '&copy; '
+    + '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    + ' contributors'
+let iconAttribution = 'Icons made by '
+    + '<a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>'
+    + ' from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>' 
 
 L.tileLayer(anotherLayer, {
     attribution: osmAttribution + ' | ' + iconAttribution

@@ -24,9 +24,17 @@ L.tileLayer(anotherLayer, {
 for(let m of markers) {
     let markerOptions = {
         title: m.title,
-        icon: m.icon
+        icon: m.icon,
+        alt: m.title
     }
 
-    L.marker(m.coordinates, markerOptions).addTo(map);
+    let popup = L.popup()
+        .setLatLng(m.coordinates)
+        .setContent(`<h1>${m.title}</h1>`);
+
+    let marker = L.marker(m.coordinates, markerOptions)
+
+    marker.bindPopup(popup).openPopup();
+    marker.addTo(map);
 }
 

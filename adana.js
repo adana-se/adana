@@ -3,8 +3,7 @@ let skewerPin = L.icon({iconUrl: 'skewer.png'});
 let markers = [
     {
         coordinates: [59.33, 18.06],
-        title: 'middle of things',
-        icon: skewerPin
+        title: 'middle of things'
     }
 ]
 
@@ -36,7 +35,7 @@ for(let m of markers) {
     let popupContent = `<h1>${m.title}</h1>`
     let popup = L.popup(popupOptions).setLatLng(m.coordinates).setContent(popupContent)
 
-    let markerOptions = { title: m.title, icon: m.icon, alt: m.title }
+    let markerOptions = { title: m.title, icon: skewerPin, alt: m.title }
     let marker = L.marker(m.coordinates, markerOptions)
 
     marker.bindPopup(popup).openPopup();

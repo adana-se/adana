@@ -22,25 +22,16 @@ let attribution = () => {
     return osmAttribution + ' | ' + iconAttribution
 }
 
-
-L.tileLayer(anotherLayer, {
-    attribution: attribution()
-}).addTo(map);
+L.tileLayer(anotherLayer, { attribution: attribution() }).addTo(map);
 
 for(let m of markers) {
     let popupOptions = { className: 'markerPopup' }
-    let popup = L.popup(popupOptions)
-        .setLatLng(m.coordinates)
-        .setContent(`<h1>${m.title}</h1>`);
+    let popupContent = `<h1>${m.title}</h1>`
+    let popup = L.popup(popupOptions).setLatLng(m.coordinates).setContent(popupContent)
 
-    let markerOptions = {
-        title: m.title,
-        icon: m.icon,
-        alt: m.title
-    }
+    let markerOptions = { title: m.title, icon: m.icon, alt: m.title }
     let marker = L.marker(m.coordinates, markerOptions)
 
     marker.bindPopup(popup).openPopup();
     marker.addTo(map);
 }
-

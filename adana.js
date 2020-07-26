@@ -35,7 +35,11 @@ let createPopup = (poi) => {
 }
 
 let createMarker = (poi) => {
-    let markerOptions = { title: poi.title, icon: skewerPin, alt: poi.title }
+    let markerOptions = {
+        title: poi.title,
+        icon: skewerPin,
+        alt: poi.title
+    }
     return  L.marker(poi.coordinates, markerOptions)    
 }
 

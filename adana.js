@@ -1,6 +1,6 @@
 let skewerPin = L.icon({iconUrl: 'skewer.png'});
 
-let markers = [
+let pois = [
     {
         coordinates: [59.33, 18.06],
         title: 'middle of things'
@@ -27,16 +27,24 @@ let createMap = () => {
     return map
 }
 
+
+let createPopup = (poi) => {
+    let popupOptions = { className: 'markerPopup' }
+    let popupContent = `<h1>${poi.title}</h1>`
+    return L.popup(popupOptions).setLatLng(poi.coordinates).setContent(popupContent)    
+}
+
+let createMarker = (poi) => {
+    let markerOptions = { title: poi.title, icon: skewerPin, alt: poi.title }
+    return  L.marker(poi.coordinates, markerOptions)    
+}
+
 let map = createMap()
 
 
-for(let m of markers) {
-    let popupOptions = { className: 'markerPopup' }
-    let popupContent = `<h1>${m.title}</h1>`
-    let popup = L.popup(popupOptions).setLatLng(m.coordinates).setContent(popupContent)
-
-    let markerOptions = { title: m.title, icon: skewerPin, alt: m.title }
-    let marker = L.marker(m.coordinates, markerOptions)
+for(let poi of pois) {
+    let popup = createPopup(poi)
+    let marker = createMarker(poi)
 
     marker.bindPopup(popup).openPopup();
     marker.addTo(map);

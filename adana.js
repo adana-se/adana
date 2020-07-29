@@ -7,8 +7,26 @@ let pois = [
     }
 ]
 
+let startLocation = () => {
+    let storedLat = localStorage.getItem("lat")
+    let storedLng = localStorage.getItem("lng")
+    if(storedLat == null || storedLng == null) {
+        let defaultStart = L.latLng(59.3346, 18.066)
+        return defaultStart
+    }
+    return L.latLng(storedLat, storedLng)
+}
+
+let saveLocation = (map) => {
+    return () => {
+        let currentLocation = map.getCenter()
+        localStorage.setItem("lat", currentLocation.lat)
+        localStorage.setItem("lng", currentLocation.lng)
+    }
+}
+
 let createMap = () => {
-    let map = L.map('adanamap').setView([59.3346, 18.066], 13);
+    let map = L.map('adanamap').setView(startLocation(), 13);
     let anotherLayer = 'http://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
 
     let attribution = () => {
@@ -23,6 +41,8 @@ let createMap = () => {
     }
 
     L.tileLayer(anotherLayer, { attribution: attribution() }).addTo(map);
+
+    map.on("move", saveLocation(map))
 
     return map
 }

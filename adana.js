@@ -2,16 +2,26 @@ let skewerPin = L.icon({iconUrl: 'skewer.png'});
 
 let pois = [
     {
-        coordinates: [59.33, 18.06],
-        title: 'middle of things'
+        plusCode: '837H+V9 Stockholm',
+        title: 'Amida kolgrill'
     }
 ]
+
+const startLat = 59.3346
+const startLng = 18.066
+
+let coordinatesFromPlusCode = (plusCode) => {
+    let actualCode = plusCode.split(' ')[0]
+    let fullCode = OpenLocationCode.recoverNearest(actualCode, startLat, startLng)
+    let location = OpenLocationCode.decode(fullCode)
+    return [location.latitudeCenter, location.longitudeCenter]
+}
 
 let startLocation = () => {
     let storedLat = localStorage.getItem("lat")
     let storedLng = localStorage.getItem("lng")
     if(storedLat == null || storedLng == null) {
-        let defaultStart = L.latLng(59.3346, 18.066)
+        let defaultStart = L.latLng(startLat, startLng)
         return defaultStart
     }
     return L.latLng(storedLat, storedLng)
@@ -51,7 +61,8 @@ let createMap = () => {
 let createPopup = (poi) => {
     let popupOptions = { className: 'markerPopup' }
     let popupContent = `<h1>${poi.title}</h1>`
-    return L.popup(popupOptions).setLatLng(poi.coordinates).setContent(popupContent)    
+    let coordinates = coordinatesFromPlusCode(poi.plusCode)
+    return L.popup(popupOptions).setLatLng(coordinates).setContent(popupContent)
 }
 
 let createMarker = (poi) => {
@@ -60,7 +71,10 @@ let createMarker = (poi) => {
         icon: skewerPin,
         alt: poi.title
     }
-    return  L.marker(poi.coordinates, markerOptions)    
+    let coordinates = coordinatesFromPlusCode(poi.plusCode)
+    console.log(coordinates)
+    console.log(markerOptions)
+    return  L.marker(coordinates, markerOptions)
 }
 
 let map = createMap()

@@ -1,4 +1,4 @@
-let skewerPin = L.icon({iconUrl: 'skewer.png'});
+let skewerPin = L.icon({iconUrl: 'skewer.png', className: 'skewer'});
 
 let pois = [
     {

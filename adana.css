@@ -2,3 +2,7 @@ html { height: 100%; }
 body { height: 100%; margin: 0px; }
 #adanamap { height: 100%; }
 .skewer { margin: 0 0 0 -32px; }
+td.score { text-align: right; }
+table.scoreMatrix { width: 100%; }
+.headerStars { text-align: center; }
+hr { color: lightgrey; }

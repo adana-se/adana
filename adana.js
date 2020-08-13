@@ -3,7 +3,12 @@ let skewerPin = L.icon({iconUrl: 'skewer.png', className: 'skewer'});
 let pois = [
     {
         plusCode: '837H+V9 Stockholm',
-        title: 'Amida kolgrill'
+        title: 'Amida kolgrill',
+        taste: 4,
+        heat: 3,
+        juice: 3,
+        overall: 4,
+        lastUpdated: '2020-08-13'
     }
 ]
 
@@ -58,9 +63,41 @@ let createMap = () => {
 }
 
 
+let unicodeStarsMatchingScore = (score) => {
+    let stars = ''
+    let star = '★'
+    for(let i = 0; i < 5; i++) {
+        if( i == score ) {
+            star = '☆'
+        }
+        stars += star
+    }
+
+    return stars
+}
+
+let oneRow = (title, score) => {
+    return `<tr class="${title}"><td class="header">${title}</td><td class="score">${unicodeStarsMatchingScore(score)}</td></tr>`
+}
+
+let createPopupContent = (poi) => {
+    return `
+      <h1 class="headerStars">${unicodeStarsMatchingScore(poi.overall)}</h1>
+      <hr/>
+      <h1>${poi.title}</h1>
+      <table class="scoreMatrix">
+        ${oneRow('heat', poi.heat)}
+        ${oneRow('juice', poi.juice)}
+        ${oneRow('taste', poi.taste)}
+      </table>
+      <hr/>
+      <div>last updated on ${poi.lastUpdated}</div>
+`
+}
+
 let createPopup = (poi) => {
     let popupOptions = { className: 'markerPopup' }
-    let popupContent = `<h1>${poi.title}</h1>`
+    let popupContent = createPopupContent(poi)
     let coordinates = coordinatesFromPlusCode(poi.plusCode)
     return L.popup(popupOptions).setLatLng(coordinates).setContent(popupContent)
 }

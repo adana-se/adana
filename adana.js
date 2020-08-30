@@ -4,11 +4,23 @@ let pois = [
     {
         plusCode: '837H+V9 Stockholm',
         title: 'Amida kolgrill',
-        taste: 4,
-        heat: 3,
-        juice: 3,
-        overall: 4,
+        taste: 3,
+        heat: 2,
+        juice: 2,
+        overall: 8.2,
         lastUpdated: '2020-08-13'
+    },
+    {
+        plusCode: 'CWHQ+97 Sollentuna',
+        title: 'Kolgrill Habayeb',
+        taste: 2,
+        heat: 0,
+        juice: 3,
+        overall: 7.6,
+        lastUpdated: '2020-08-30',
+        accesories: ['tomato', 'lemon', 'parsley', 'green chilli'],
+        extras: ['soup', 'sallad buffet', 'pickles'],
+        carbs: ['huge bread', 'rice']
     }
 ]
 
@@ -66,7 +78,7 @@ let createMap = () => {
 let unicodeStarsMatchingScore = (score) => {
     let stars = ''
     let star = '★'
-    for(let i = 0; i < 5; i++) {
+    for(let i = 0; i < 3; i++) {
         if( i == score ) {
             star = '☆'
         }
@@ -82,7 +94,7 @@ let oneRow = (title, score) => {
 
 let createPopupContent = (poi) => {
     return `
-      <h1 class="headerStars">${unicodeStarsMatchingScore(poi.overall)}</h1>
+      <h1 class="headerStars">${poi.overall}</h1>
       <hr/>
       <h1>${poi.title}</h1>
       <table class="scoreMatrix">

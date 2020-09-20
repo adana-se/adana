@@ -20,7 +20,21 @@ let pois = [
         lastUpdated: '2020-08-30',
         accesories: ['tomato', 'lemon', 'parsley', 'green chilli'],
         extras: ['soup', 'sallad buffet', 'pickles'],
-        carbs: ['huge bread', 'rice']
+        carbs: ['huge bread', 'rice'],
+        altName: 'shish'
+    },
+    {
+        plusCode: '7W86+V4 Huddinge',
+        title: 'Le Beirut',
+        taste: 0,
+        heat: 1,
+        juice: 0,
+        overall: 3.3,
+        lastUpdated: '2020-09-12',
+        accesories: ['salad', 'hummus', 'labneh', 'mohammara'],
+        extras: [],
+        carbs: ['frites'],
+        altName: 'Shish Kebab Kafta'
     }
 ]
 

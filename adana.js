@@ -35,6 +35,18 @@ let pois = [
         extras: [],
         carbs: ['frites'],
         altName: 'Shish Kebab Kafta'
+    },
+    {
+        plusCode: '89CJ+P6 Gustavsberg',
+        title: 'Arena Kolgrill',
+        taste: 2,
+        heat: 2,
+        juice: 2,
+        overall: 7.3,
+        lastUpdated: '2020-09-29',
+        accesories: ['salad', 'tzatziki', 'tomato', 'tomato/chilli/parsley sauce', 'salad'],
+        extras: [],
+        carbs: ['bulgur'],
     }
 ]
 
